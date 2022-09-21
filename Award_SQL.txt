@@ -1,0 +1,19 @@
+-- Table: public.award
+
+-- DROP TABLE IF EXISTS public.award;
+
+CREATE TABLE IF NOT EXISTS public.award
+(
+    award_id integer,
+    title character varying COLLATE pg_catalog."default",
+    award character varying COLLATE pg_catalog."default",
+    movie_id integer,
+	PRIMARY KEY (award_id)
+    CONSTRAINT "Movie_ID" FOREIGN KEY (award_id)
+        REFERENCES public."Movies" (movie_id) MATCH SIMPLE
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.award
+    OWNER to postgres;

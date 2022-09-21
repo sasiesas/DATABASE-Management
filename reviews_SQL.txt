@@ -1,0 +1,27 @@
+-- Table: public.reviews
+
+-- DROP TABLE IF EXISTS public.reviews;
+
+CREATE TABLE IF NOT EXISTS public.reviews
+(
+    review_id integer,
+    user_id character varying COLLATE pg_catalog."default",
+    title character varying COLLATE pg_catalog."default",
+    user_type character varying COLLATE pg_catalog."default",
+    username character varying COLLATE pg_catalog."default",
+    idv_score integer,
+    review text COLLATE pg_catalog."default",
+    word_count integer,
+    movie_id integer,
+	PRIMARY KEY (review_id),
+    CONSTRAINT "Movie_ID" FOREIGN KEY (movie_id)
+        REFERENCES public."Movies" (movie_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.reviews
+    OWNER to postgres;
