@@ -1,0 +1,22 @@
+-- Table: public.Director
+
+-- DROP TABLE IF EXISTS public."Director";
+
+CREATE TABLE IF NOT EXISTS public."Director"
+(
+    director_id integer NOT NULL,
+    movie_id integer,
+    first_name character varying COLLATE pg_catalog."default",
+    surname character varying COLLATE pg_catalog."default",
+    CONSTRAINT "Director.temp_pkey" PRIMARY KEY (director_id),
+    CONSTRAINT "Movie_ID" FOREIGN KEY (movie_id)
+        REFERENCES public."Movies" (movie_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."Director"
+    OWNER to postgres;

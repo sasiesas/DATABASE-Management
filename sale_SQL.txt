@@ -1,0 +1,25 @@
+-- Table: public.sale
+
+-- DROP TABLE IF EXISTS public.sale;
+
+CREATE TABLE IF NOT EXISTS public.sale
+(
+    title character varying COLLATE pg_catalog."default",
+    international_box_office integer,
+    domestic_box_office integer,
+    worldwide_box_office bigint,
+    production_budget integer,
+    opening_weekend integer,
+    theatre_count integer,
+    movie_id integer,
+    CONSTRAINT "Movie_ID" FOREIGN KEY (movie_id)
+        REFERENCES public."Movies" (movie_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.sale
+    OWNER to postgres;
